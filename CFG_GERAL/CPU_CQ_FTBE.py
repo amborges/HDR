@@ -1,0 +1,3 @@
+CPU_LIST = [0, 1]
+CQ_LIST = [55]
+FTBE = 5
