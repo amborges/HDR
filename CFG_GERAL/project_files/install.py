@@ -14,9 +14,9 @@ import CPU_CQ_FTBE as CCF
 old_decoder = sys.argv[1]
 
 if old_decoder == "VP9":
-	decoder_path = 'libvpx--'
+	decoder_path = 'libvpx--vp9'
 elif old_decoder == "VP8":
-	decoder_path = 'libvpx--'
+	decoder_path = 'libvpx--vp8'
 elif old_decoder == "H264":
 	decoder_path = 'JM--'
 elif old_decoder == "H265":
@@ -36,7 +36,7 @@ for i in range(len(files)):
 
 files = glob.glob(FILES_PATH+'/4.TRANSC/*')
 for i in range(len(files)):
-	if( ('aom--' in files[i]) or (decoder_path in files[i]) ):
+	if( ('aom_acc--' in files[i]) or (decoder_path in files[i]) ):
 		old_path = files[i]
 		new_path = files[i].replace('CFG_GERAL/project_files/', '').replace('--', '/')
 		cp_command = 'cp ' + old_path + ' ' + new_path

@@ -161,8 +161,13 @@ INT3 old_decoder_decode_block_size(int bs){
 		{ 4,  4, 5},
 		{16, 16, 3}
 	};
-#elif THESIS_OLD_DECODER = OLD_DECODER_IS_H264
-	INT3 bsv[13] = {
+	
+	int pos = 0;
+	if(bs == 16) pos = 1;
+	
+	bs = pos;
+#elif THESIS_OLD_DECODER == OLD_DECODER_IS_H264
+	INT3 bsv[7] = {
 		{ 4,  4, 5}, //SMB4x4, SI4MB
 		{ 4,  8, 4}, //SMB4x8
 		{ 8,  4, 4}, //SMB8x4
@@ -407,15 +412,15 @@ int is_the_csv_line_empty(CSV line){
 
 //de uma linha vinda do CSV do OLD, preenche o buffer do quadro
 void old_decoder_row_treatment(CSV line, FRAME *FRM){
-#if THESIS_OLD_DECODE == 1
+#if THESIS_OLD_DECODER == OLD_DECODER_IS_VP9
 	//No VP9 a relação da posição dos pixeis é de 8, não de 4 como no AV1
 	int mi_col = line.mi_col * 2;
 	int mi_row = line.mi_row * 2;
-#elif THESIS_OLD_DECODE == 2
+#elif THESIS_OLD_DECODER == OLD_DECODER_IS_VP8
 	//No vp8 a relação da posição dos pixeis é de 16, não de 4 como no AV1
 	int mi_col = line.mi_col * 4;
 	int mi_row = line.mi_row * 4;
-#elif THESIS_OLD_DECODE == 3
+#elif THESIS_OLD_DECODER == OLD_DECODER_IS_H264
 	//No H.264 a relação da posição dos pixeis é de 1, não de 4 como no AV1
 	int mi_col = line.mi_col / 4;
 	int mi_row = line.mi_row / 4;

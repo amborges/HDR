@@ -1,0 +1,153 @@
+
+Warning: Hierarchical coding or Referenced B slices used.
+         Make sure that you have allocated enough references
+         in reference buffer to achieve best performance.
+Setting Default Parameters...
+Parsing Configfile /home/pc-einstein/Documents/Alex/Vitech_Gerenciador/JM/bin/encoder.cfg.............................................................................................................................................................................................................................................................................................................................................................................................................................
+Parsing command line string 'SourceWidth = 1280'.
+Parsing command line string 'SourceHeight = 720'.
+Parsing command line string 'FrameRate = 60.00'.
+Parsing command line string 'SourceBitDepthLuma = 8'.
+Parsing command line string 'SourceBitDepthChroma = 8'.
+Parsing command line string 'OutputBitDepthLuma = 8'.
+Parsing command line string 'OutputBitDepthChroma = 8'.
+Parsing command line string 'QPISlice = 22'.
+Parsing command line string 'QPPSlice = 22'.
+Parsing command line string 'FramesToBeEncoded = 60'.
+Parsing command line string 'OutputFile = /home/pc-einstein/Documents/Alex/Vitech_Gerenciador/KristenAndSara_1280x720_60/cq_22/video/coded_JM.h264'.
+Parsing command line string 'InputFile = /home/pc-einstein/Documents/Alex/class_C/KristenAndSara_1280x720_60.yuv'.
+Parsing command line string 'ReconFile = /home/pc-einstein/Documents/Alex/Vitech_Gerenciador/KristenAndSara_1280x720_60/cq_22/video/coded_JM.yuv'.
+Parsing command line string 'LeakyBucketParamFile = /home/pc-einstein/Documents/Alex/Vitech_Gerenciador/KristenAndSara_1280x720_60/cq_22/log/leakybucketparam.cfg'.
+Parsing command line string 'StatsFile = /home/pc-einstein/Documents/Alex/Vitech_Gerenciador/KristenAndSara_1280x720_60/cq_22/log/stats.dat'.
+
+------------------------------- JM 19.0 (FRExt) -------------------------------
+ Input YUV file                    : /home/pc-einstein/Documents/Alex/class_C/KristenAndSara_1280x720_60.yuv 
+ Output H.264 bitstream            : /home/pc-einstein/Documents/Alex/Vitech_Gerenciador/KristenAndSara_1280x720_60/cq_22/video/coded_JM.h264 
+ Output YUV file                   : /home/pc-einstein/Documents/Alex/Vitech_Gerenciador/KristenAndSara_1280x720_60/cq_22/video/coded_JM.yuv 
+ YUV Format                        : YUV 4:2:0 
+ Frames to be encoded              : 60
+ Freq. for encoded bitstream       : 60.00
+ PicInterlace / MbInterlace        : 0/0
+ Transform8x8Mode                  : 1
+ ME Metric for Refinement Level 0  : SAD
+ ME Metric for Refinement Level 1  : Hadamard SAD
+ ME Metric for Refinement Level 2  : Hadamard SAD
+ Mode Decision Metric              : Hadamard SAD
+ Motion Estimation for components  : Y
+ Image format                      : 1280x720 (1280x720)
+ Error robustness                  : Off
+ Search range                      : 32
+ Total number of references        : 5
+ References for P slices           : 5
+ References for B slices (L0, L1)  : 5, 1
+ Sequence type                     : Hierarchy (QP: I 22, P 22, B 30) 
+ Entropy coding method             : CABAC
+ Profile/Level IDC                 : (100,40)
+ Motion Estimation Scheme          : EPZS
+ EPZS Pattern                      : Extended Diamond
+ EPZS Dual Pattern                 : Extended Diamond
+ EPZS Fixed Predictors             : Aggressive
+ EPZS Aggressive Predictors        : Disabled
+ EPZS Temporal Predictors          : Enabled
+ EPZS Spatial Predictors           : Enabled
+ EPZS Threshold Multipliers        : (1 0 2)
+ EPZS Subpel ME                    : Basic
+ EPZS Subpel ME BiPred             : Basic
+ Search range restrictions         : none
+ RD-optimized mode decision        : used
+ Data Partitioning Mode            : 1 partition 
+ Output File Format                : H.264/AVC Annex B Byte Stream Format 
+-------------------------------------------------------------------------------
+Frame     Bit/pic    QP   SnrY    SnrU    SnrV    Time(ms) MET(ms) Frm/Fld Ref  
+-------------------------------------------------------------------------------
+00000(NVB)     336 
+00000(IDR)  513160   22  44.589  47.366  48.143      1091       0    FRM    3
+00008( P )  180832   22  43.913  47.036  47.846      1653     275    FRM    2
+00004( B )    9352   30  41.995  46.689  47.586      2370     807    FRM    1
+00002( B )    3976   31  41.993  46.621  47.498      2504     938    FRM    1
+00001( B )    1008   32  44.434  47.352  48.111      2445     994    FRM    0
+00003( B )    1144   32  41.747  46.761  47.582      2523    1066    FRM    0
+00006( B )    5800   31  41.859  46.768  47.531      2722    1162    FRM    1
+00005( B )    1312   32  41.454  46.634  47.561      2748    1258    FRM    0
+00007( B )    1336   32  41.867  46.748  47.448      2720    1266    FRM    0
+00016( P )  183800   22  44.078  47.029  47.875      2743    1283    FRM    2
+00012( B )   11984   30  41.946  46.870  47.440      3050    1437    FRM    1
+00010( B )    5528   31  41.804  46.886  47.464      2922    1359    FRM    1
+00009( B )    1224   32  41.768  46.786  47.525      2780    1286    FRM    0
+00011( B )    1456   32  41.324  46.677  47.398      2822    1312    FRM    0
+00014( B )    6256   31  41.838  46.786  47.424      2973    1400    FRM    1
+00013( B )    1832   32  41.316  46.625  47.183      2853    1321    FRM    0
+00015( B )    1720   32  41.731  46.699  47.404      2782    1296    FRM    0
+00024( P )  186232   22  44.107  47.038  47.873      2752    1292    FRM    2
+00020( B )   12008   30  41.992  46.772  47.501      3062    1462    FRM    1
+00018( B )    6032   31  41.870  46.755  47.409      2908    1358    FRM    1
+00017( B )    1672   32  41.837  46.731  47.455      2771    1262    FRM    0
+00019( B )    1960   32  41.426  46.705  47.325      2825    1311    FRM    0
+00022( B )    5944   31  41.812  46.774  47.446      3002    1409    FRM    1
+00021( B )    1880   32  41.438  46.613  47.501      2780    1281    FRM    0
+00023( B )    1536   32  41.758  46.759  47.544      2815    1290    FRM    0
+00032( P )  186904   22  44.103  47.141  47.941      2792    1304    FRM    2
+00028( B )   12216   30  41.888  46.832  47.685      3054    1459    FRM    1
+00026( B )    5368   31  41.702  46.782  47.651      2949    1383    FRM    1
+00025( B )    1744   32  41.676  46.816  47.585      2812    1283    FRM    0
+00027( B )    1520   32  41.272  46.689  47.476      2810    1304    FRM    0
+00030( B )    5112   31  41.864  46.969  47.658      2957    1379    FRM    1
+00029( B )    1448   32  41.399  46.785  47.542      2836    1270    FRM    0
+00031( B )    1208   32  41.880  46.856  47.573      2794    1296    FRM    0
+00040( P )  167456   22  44.169  47.127  47.947      2750    1273    FRM    2
+00036( B )    8728   30  42.057  46.927  47.600      3045    1441    FRM    1
+00034( B )    4448   31  41.981  46.816  47.576      2940    1360    FRM    1
+00033( B )    1352   32  41.945  46.926  47.485      2758    1259    FRM    0
+00035( B )    1320   32  41.571  46.883  47.439      2749    1258    FRM    0
+00038( B )    3968   31  42.223  46.880  47.723      2994    1354    FRM    1
+00037( B )    1128   32  41.713  46.846  47.535      2731    1249    FRM    0
+00039( B )     704   32  42.200  46.774  47.637      2790    1267    FRM    0
+00048( P )  148776   22  44.168  47.156  47.917      2708    1249    FRM    2
+00044( B )    6888   30  42.249  46.988  47.723      2994    1409    FRM    1
+00042( B )    2856   31  42.330  46.944  47.721      2892    1323    FRM    1
+00041( B )     552   32  42.150  46.921  47.649      2697    1228    FRM    0
+00043( B )     552   32  41.806  46.701  47.711      2737    1257    FRM    0
+00046( B )    3488   31  42.233  46.929  47.628      2943    1363    FRM    1
+00045( B )     600   32  41.836  46.758  47.634      2755    1257    FRM    0
+00047( B )     688   32  42.233  46.945  47.728      2752    1270    FRM    0
+00056( P )  157576   22  44.176  47.141  47.926      2733    1265    FRM    2
+00052( B )    6288   30  42.287  46.866  47.732      3000    1415    FRM    1
+00050( B )    3000   31  42.278  46.794  47.554      2968    1332    FRM    1
+00049( B )     488   32  42.279  46.869  47.666      2800    1251    FRM    0
+00051( B )     600   32  41.858  46.696  47.617      2777    1274    FRM    0
+00054( B )    2512   31  42.267  46.758  47.685      3448    1594    FRM    1
+00053( B )     544   32  41.888  46.673  47.526      3702    1685    FRM    0
+00055( B )     752   32  42.238  46.706  47.629      2909    1330    FRM    0
+00059( P )  134432   22  44.194  47.192  47.936      2925    1341    FRM    2
+00057( B )    2120   30  42.660  46.826  47.740      3852    1801    FRM    0
+00058( B )    2360   30  42.691  46.932  47.699      3697    1717    FRM    0
+-------------------------------------------------------------------------------
+ Total Frames:  60 
+ LeakyBucketRate File does not exist. Using rate calculated from avg. rate 
+ Number Leaky Buckets: 8 
+     Rmin     Bmin     Fmin 
+  2028660   660181   660181 
+  2535780   651729   651729 
+  3042900   643277   643277 
+  3550020   634825   634825 
+  4057140   626373   626373 
+  4564260   617921   617921 
+  5071380   609469   609469 
+  5578500   601017   601017 
+------------------ Average data all frames  -----------------------------------
+
+ Total encoding time for the seq.  : 169.698 sec (0.35 fps)
+ Total ME time for sequence        :  76.652 sec 
+
+ Y { PSNR (dB), cSNR (dB), MSE }   : {  42.289,  42.204,   3.91416 }
+ U { PSNR (dB), cSNR (dB), MSE }   : {  46.855,  46.852,   1.34235 }
+ V { PSNR (dB), cSNR (dB), MSE }   : {  47.626,  47.622,   1.12434 }
+
+ Total bits                        : 2029016 (I 513160, P 1346008, B 169512 NVB 336) 
+ Bit rate (kbit/s)  @ 60.00 Hz     : 2029.02
+ Bits to avoid Startcode Emulation : 400 
+ Bits for parameter sets           : 336 
+ Bits for filler data              : 0 
+
+-------------------------------------------------------------------------------
+Exit JM 19 (FRExt) encoder ver 19.0 

@@ -10,7 +10,17 @@ initial_path = HOME_PATH + '/../1.DEC_ENC/'
 final_path = '/video/coded_aom.av1'
 
 #Primeira coisa, compilar o código C
-os.system("gcc main.c THESIS.c -lm -DTHESIS_PASS_CSV=1 -fcommon")# -lpng -fsanitize=address")
+old_decoder = sys.argv[1]
+if old_decoder == "VP9":
+	old_decoder_number = 1
+elif old_decoder == "VP8":
+	old_decoder_number = 2
+elif old_decoder == "H264":
+	old_decoder_number = 3
+elif old_decoder == "H265":
+	old_decoder_number = 4
+
+os.system("gcc main.c THESIS.c -lm -DTHESIS_PASS_CSV=1 -fcommon -DTHESIS_OLD_DECODER="+str(old_decoder_number))# -lpng -fsanitize=address")
 
 #SINGLE CPU
 for _, video_name, video_width, video_height, _, _, _, _, _ in VD.VIDEOS_LIST:

@@ -57,7 +57,7 @@ segundo_passo:
 
 #converte os arquivos csv brutos para o csv treinável
 terceiro_passo:
-	cd 2.CSV && taskset -c $(CPU_LIST) python3 main.py
+	cd 2.CSV && taskset -c $(CPU_LIST) python3 main.py $(OLD_DECODER)
 
 
 #split csv treinavel, limpa dados, treina e testa
