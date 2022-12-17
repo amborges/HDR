@@ -21,7 +21,8 @@ elif old_decoder == "H264":
 	decoder_path = 'JM--'
 elif old_decoder == "H265":
 	decoder_path = 'HM--'
-
+elif old_decoder == "H266":
+	decoder_path = 'VTM--'
 
 
 #copia os arquivos modificados para os locais corretos

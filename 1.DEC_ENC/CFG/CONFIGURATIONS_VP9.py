@@ -167,7 +167,7 @@ def GENERATE_COMMAND(cq, folder, video_path, codec_path, home_path, path_id, ext
 	
 	vp9_decoder = codec_path + CODEC_NAME
 	
-	input_file = home_path + '/../IN_BITSTREAMS/VP9/' + folder + '/cq_20/video/coded_libvpx.vp9'
+	input_file = home_path + '/../IN_BITSTREAMS/' + folder + '/cq_20/video/coded_libvpx.vp9'
 	
 	this_folder = home_path + '/' + folder + '/'
 	

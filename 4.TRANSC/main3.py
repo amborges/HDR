@@ -191,7 +191,9 @@ class EXPERIMENT:
 			self.terminal_command = None
 			self.model_name = None
 		else:
-		
+			if old_decoder == "VP8" and str(bitdepth) == str(10):
+				return
+			
 			#valor do CQ do experimento
 			self.cq = str(cq)
 			#nome do vídeo/pasta do experimento
@@ -247,7 +249,7 @@ class EXPERIMENT:
 																self.num_unit,
 																model_name)
 			#Os codificadores da VCEG geram yuv's ao invés de y4m's
-			if old_decoder == "H264" or old_decoder == "H265":
+			if old_decoder == "H264" or old_decoder == "H265" or old_decoder == "H266":
 				self.command = self.command.replace("y4m", "yuv")
 			
 			#texto de identificação do processo no terminal

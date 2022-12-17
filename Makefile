@@ -25,6 +25,7 @@ PYINSTALL  = python3 CFG_GERAL/project_files/OLD_DECODERS/install_old_decoder.py
 #OLD_DECODER = "VP8"
 OLD_DECODER = "H264"
 #OLD_DECODER = "H265"
+#OLD_DECODER = "H266"
 
 
 verifica:
@@ -43,6 +44,11 @@ all:
 	$(MAKE) oitavo_passo
 	$(MAKE) nono_passo
 
+processa_hevc_csv2:
+ifeq ($(OLD_DECODER), H265)
+	cd 1.DEC_ENC && python3 se_hevc.py $(WHO)
+endif
+
 #atualiza o caminho das sequencias de videos codificadas com VP9	
 #instala VP9 e decodifica os arquivos VP9 e gera o csv-vp9
 primeiro_passo:
@@ -52,6 +58,7 @@ primeiro_passo:
 
 #instala AV1 e codifica os videos para AV1
 segundo_passo:
+	$(MAKE) processa_hevc_csv2 WHO=1.DEC_ENC
 	cd 1.DEC_ENC && python3 main2.py $(OLD_DECODER)
 
 
@@ -88,6 +95,7 @@ setimo_passo:
 
 #codifica os videos AV1 sob vários modelos de ML
 oitavo_passo:
+	$(MAKE) processa_hevc_csv2 WHO=4.TRANSC
 	cd 4.TRANSC && python3 main3.py $(OLD_DECODER)
 
 
@@ -160,6 +168,6 @@ prepara:
 	cd 4.TRANSC/aom/bin && cmake -DAOM_TARGET_CPU=generic .. && taskset -c $(CPU_LIST) make -j $(NUM_OF_CPU)
 	
 	#compila o libaom passo 4 acelerado
-	cd 4.TRANSC/aom/bin && cmake -DTHESIS_PASS_TRANSC=1 -DTHESIS_OLD_DECODER=$(OLD_DECODER) -DAOM_TARGET_CPU=generic -DCMAKE_C_FLAGS="-I/usr/include/python3.8 -lpython3.8 -lm" .. && taskset -c $(CPU_LIST) make -j $(NUM_OF_CPU)
+	cd 4.TRANSC/aom_acc/bin && cmake -DTHESIS_PASS_TRANSC=1 -DTHESIS_OLD_DECODER=$(OLD_DECODER) -DAOM_TARGET_CPU=generic -DCMAKE_C_FLAGS="-I/usr/include/python3.8 -lpython3.8 -lm" .. && taskset -c $(CPU_LIST) make -j $(NUM_OF_CPU)
 
 

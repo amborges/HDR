@@ -63,11 +63,11 @@ VIDEOS_PATH = {
 # [ CLASSE, NOME DO VÍDEO, LARGURA, ALTURA, SUBAMOSTRAGEM, PROFUNDIDADE DE BITS, NUMERO DE QUADROS, FRAMES PER UNIT, UNIT SIZE]
 VIDEOS_LIST = [
 	['E', 'FountainSky_1920x1080p30_130f', 1920, 1080, 420, 8, 130, 30000, 1001],
-	#['E', 'Skater227_1920x1080_30fps', 1920, 1080, 420, 10, 300, 30, 1],
-	#['E', 'TimeLapseStreet_1920x1080p30_130f', 1920, 1080, 420, 8, 130, 30, 1],
-	#['E', 'Wheat_1920x1080', 1920, 1080, 420, 8, 300, 30000, 1001],
-	#['E', 'WorldCup_1920x1080_30p', 1920, 1080, 420, 8, 150, 30, 1],
-	#['E', 'WorldCup_far_1920x1080_30p', 1920, 1080, 420, 8, 150, 30, 1],
-	#['E', 'WorldCupFarSky_1920x1080_30p', 1920, 1080, 420, 8, 150, 30, 1]
+	['E', 'Skater227_1920x1080_30fps', 1920, 1080, 420, 10, 300, 30, 1],
+	['E', 'TimeLapseStreet_1920x1080p30_130f', 1920, 1080, 420, 8, 130, 30, 1],
+	['E', 'Wheat_1920x1080', 1920, 1080, 420, 8, 300, 30000, 1001],
+	['E', 'WorldCup_1920x1080_30p', 1920, 1080, 420, 8, 150, 30, 1],
+	['E', 'WorldCup_far_1920x1080_30p', 1920, 1080, 420, 8, 150, 30, 1],
+	['E', 'WorldCupFarSky_1920x1080_30p', 1920, 1080, 420, 8, 150, 30, 1]
 ]
 

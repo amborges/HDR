@@ -166,7 +166,7 @@ def GENERATE_COMMAND(cq, folder, video_path, codec_path, home_path, path_id, ext
 	
 	hevc_decoder = codec_path + CODEC_NAME
 	
-	input_file  = home_path + '/../IN_BITSTREAMS/H265/' + folder + '/cq_22/video/coded_HM.hevc'
+	input_file  = home_path + '/../IN_BITSTREAMS/' + folder + '/cq_22/video/coded_HM.hevc'
 	
 	this_folder = home_path + '/' + folder + '/'
 	

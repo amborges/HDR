@@ -185,7 +185,7 @@ def GENERATE_COMMAND(cq, folder, video_path, codec_path, home_path, path_id, ext
 	main_cfg_param = ' -d ' + codec_path + 'decoder.cfg'
 	
 	
-	codfile_param = ' -p InputFile=' + home_path + '/../IN_BITSTREAMS/H264/' + folder + '/cq_22/video/coded_JM.h264'
+	codfile_param = ' -p InputFile=' + home_path + '/../IN_BITSTREAMS/' + folder + '/cq_22/video/coded_JM.h264'
 	#definindo o caminho do vídeo codificado de entrada
 	#codfile_param = ' -p InputFile=' + this_folder + 'video/coded_' + path_id +  ep_name + '.h264'
 	

@@ -584,7 +584,7 @@ static void decode_mb_rows(VP8D_COMP *pbi) {
       else if(xd->mode_info_context->mbmi.mode != SPLITMV){
       	bsize = 4;
       }
-      
+      //THESIS
       printf("%d,%d,%d,%d,%d\n", pc->current_video_frame, mb_col, mb_row, bsize, xd->mode_info_context->mbmi.mode);
 
       decode_macroblock(pbi, xd, mb_idx);

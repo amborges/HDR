@@ -16,7 +16,8 @@ def install_h265(cores_list, num_of_cores):
 	subprocess.call("sed -i 's/-Werror/-Wno-error=class-memaccess/g' 1.DEC_ENC/HM/build/linux/common/makefile.base", shell=True)
 	subprocess.run("cd 1.DEC_ENC/HM/bin && make -C ../build/linux clean && taskset -c {} make -j {} -C ../build/linux all".format(cores_list, num_of_cores), shell=True)
 	
-	
+def install_h266(cores_list, num_of_cores):
+	subprocess.run("cd 1.DEC_ENC/VTM/bin && cmake -DCMAKE_BUILD_TYPE=Release .. && taskset -c {} make -j {}".format(cores_list, num_of_cores), shell=True)	
 	
 	
 #__MAIN__#
@@ -32,5 +33,7 @@ try:
 		install_h264(cores_list, num_of_cores)
 	elif (old_decoder == "H265"):
 		install_h265(cores_list, num_of_cores)
+	elif (old_decoder == "H266"):
+		install_h266(cores_list, num_of_cores)
 except:
 	print("ERRO GRAVE AO COMPILAR O SOFTWARE REFERÊNCIA REQUISITADO\n")

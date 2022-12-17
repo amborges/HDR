@@ -15,6 +15,9 @@ def download_h265():
 	subprocess.run("svn checkout https://hevc.hhi.fraunhofer.de/svn/svn_HEVCSoftware/tags/HM-16.20/ && mkdir HM-16.20/bin", shell=True)
 	subprocess.run("mv HM-16.20 1.DEC_ENC/HM", shell=True)
 
+def download_h266():
+	subprocess.run("git clone https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM && cd VTM && git reset --hard c71f7a9e && mkdir bin", shell=True)
+	subprocess.run("mv VTM 1.DEC_ENC/VTM", shell=True)
 
 
 
@@ -29,5 +32,7 @@ try:
 		download_h264()
 	elif (old_decoder == "H265"):
 		download_h265()
+	elif (old_decoder == "H266"):
+		download_h266()
 except:
 	print("ERRO GRAVE AO BAIXAR O SOFTWARE REFERÊNCIA REQUISITADO\n")
