@@ -207,7 +207,7 @@ def test_hyperparams(csv_file, parallel_cores):
 	          
 	df2.sort_values('rank_test_score', inplace=True)
 	log_file = csv_file.split('2.CSV')[0] + '3.ML/log/iter_of_' + csv_file.split('/')[-1]
-	df2.to_csv(log_file)
+	df2.to_csv(log_file, header=False)
 	
 	#limpando dados
 	del df2
@@ -243,7 +243,8 @@ def concat_combinations():
 	for filename in os.listdir(path):
 		f = os.path.join(path, filename)
 		if os.path.isfile(f):
-			bash_cmd = 'head -n 21 ' + f + ' | tail -n 20 >> ' + TMP_FILE
+			#bash_cmd = 'head -n 21 ' + f + ' | tail -n 20 >> ' + TMP_FILE
+			bash_cmd = 'head -n 20 ' + f + ' >> ' + TMP_FILE
 			subprocess.run(bash_cmd, shell=True)
 			
 	#importando o arquivo para limpar as colunas e linhas duplicadas
@@ -445,22 +446,22 @@ CSV_for_testing = [ (main_path + 'test_' + depth + '_' + cq + '_limpo.csv', dept
 
 
 #Primeira fase: testa vários hiperparâmetros e gera um arquivo contendo o csv de todos testados, ordenado pelos melhores. Essa primeira fase considera cada arquivo de treinamento como um loop de teste
-#MAX_CORES = len(CCF.CPU_LIST)
+MAX_CORES = len(CCF.CPU_LIST)
 
-#for csv_file, depth, cq in CSV_for_training:
-#	test_hyperparams(csv_file, MAX_CORES)
+for csv_file, depth, cq in CSV_for_training:
+	test_hyperparams(csv_file, MAX_CORES)
 
 
 #Segunda fase: Captura as combinações a serem consideradas pra valer. Basicamente, pega os arquivos gerados na primeira fase e importa os 20 primeiros de cada um. Depois remove-se os repetidos e armazena a lista de até 320 combinações em um arquivo novo.
-#concat_combinations()
+concat_combinations()
 
 
 #terceira fase: pega a lista dos melhores, e aplica o treinamento e o teste completo para todos os casos
 #Há como retorno, os modelos testados
-#models_list = training_and_testing(len(CCF.CPU_LIST), CSV_for_training, CSV_for_testing)
+models_list = training_and_testing(len(CCF.CPU_LIST), CSV_for_training, CSV_for_testing)
 
 #quarta fase: pega o arquivo com o resultado de todos os testes, agrupa eles e faz a média, retornando os 3 primeiros lugares
 #models_cup(models_list)
 
 #quinta fase: converto o csv de vencedores para uma tupla de N possibilidades
-csv_to_tuple(3)
+csv_to_tuple(1)

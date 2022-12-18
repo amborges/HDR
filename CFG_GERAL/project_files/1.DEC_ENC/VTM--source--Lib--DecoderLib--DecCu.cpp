@@ -109,8 +109,9 @@ void DecCu::destoryDecCuReshaprBuf()
 void DecCu::decompressCtu( CodingStructure& cs, const UnitArea& ctuArea )
 {
   //..................................................................................
-  static int CAROL_numQuadro = -1, CAROL_verifica = -1;
-
+  static int CAROL_numQuadro = -1;
+  
+  //static int CAROL_verifica = -1;
   //ofstream CAROL_outFile; // outFile é o arquivo onde a saída será escrita
   //CAROL_outFile.open("/home/caroline/Pesquisa_Transcodificação/vvc_bitstreams/saidaDados.csv", ios::app); // abre o arquivo para escrita
   
@@ -234,7 +235,14 @@ void DecCu::decompressCtu( CodingStructure& cs, const UnitArea& ctuArea )
 
               //CAROL_outFile << CAROL_numQuadro << ", " << currCU.Y().x << ", " << currCU.Y().y << ", " << CAROL_tamanhoQuadratico << ", " << CAROL_alinhamentoParticionamento << ", " << CAROL_modoPred << ", " << CAROL_predInter << "\n" ;
               
-              printf("%d,%d,%d,%d,%d\n", CAROL_numQuadro, currCU.Y().x, currCU.Y().y, CAROL_tamanhoQuadratico, CAROL_alinhamentoParticionamento, CAROL_modoPred, CAROL_predInter);
+              printf("%d,%d,%d,%d,%d,%d,%d\n", 
+                      CAROL_numQuadro, 
+                      currCU.Y().x, 
+                      currCU.Y().y, 
+                      CAROL_tamanhoQuadratico, 
+                      CAROL_alinhamentoParticionamento, 
+                      CAROL_modoPred, 
+                      CAROL_predInter);
               
 
               //Já testei as seguintes váriaveis: prevTmpPos.x prevTmpPos.y vSize cs.slice->getSPS()->getMaxCUHeight() ctuArea currCU.geoFlag m_geoMrgCtx chType maxNumChannelType cs.pcv->chrFormat cs.picture->getRecoBuf( currCU ) IBC_BUFFER_SIZE
@@ -276,7 +284,7 @@ void DecCu::decompressCtu( CodingStructure& cs, const UnitArea& ctuArea )
   }
 
   //..................................................................................
-  CAROL_outFile.close(); // fechando arquivo
+  //CAROL_outFile.close(); // fechando arquivo
   //..................................................................................
 
 #if K0149_BLOCK_STATISTICS

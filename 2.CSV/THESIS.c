@@ -18,6 +18,7 @@
 #define OLD_DECODER_IS_VP8 2
 #define OLD_DECODER_IS_H264 3
 #define OLD_DECODER_IS_H265 4
+#define OLD_DECODER_IS_H266 5
 
 
 //O define abaixo vai indicar quantas linhas poderão ser lidas no CSV para cada superbloco
@@ -185,6 +186,42 @@ INT3 old_decoder_decode_block_size(int bs){
 	else if (bs == 3)                        pos = 4; //8x16
 	else if (bs == 2)                        pos = 5; //16x8
 	else                                     pos = 6; //16x16
+	
+	bs = pos;
+#elif THESIS_OLD_DECODER == OLD_DECODER_IS_H265
+	INT3 bsv[5] = {
+		{ 4,  4, 5},
+		{ 8,  8, 4},
+		{16, 16, 3},
+		{32, 32, 2},
+		{64, 64, 1}
+	};	
+	
+	int pos;
+	     if (bs == 4)  pos = 0; //4x4
+	else if (bs == 8)  pos = 1; //8x8
+	else if (bs == 16) pos = 2; //16x16
+	else if (bs == 32) pos = 3; //32x32
+	else               pos = 4; //64x64
+	
+	bs = pos;
+#elif THESIS_OLD_DECODER == OLD_DECODER_IS_H266
+	INT3 bsv[6] = {
+		{ 4,   4, 5},
+		{ 8,   8, 4},
+		{16,  16, 3},
+		{32,  32, 2},
+		{64,  64, 1},
+		{128,128, 0}
+	};	
+	
+	int pos;
+	     if (bs == 4)  pos = 0; //4x4
+	else if (bs == 8)  pos = 1; //8x8
+	else if (bs == 16) pos = 2; //16x16
+	else if (bs == 32) pos = 3; //32x32
+	else if (bs == 64) pos = 4; //64x64
+	else               pos = 5; //128x128
 	
 	bs = pos;
 #endif
@@ -420,8 +457,9 @@ void old_decoder_row_treatment(CSV line, FRAME *FRM){
 	//No vp8 a relação da posição dos pixeis é de 16, não de 4 como no AV1
 	int mi_col = line.mi_col * 4;
 	int mi_row = line.mi_row * 4;
-#elif THESIS_OLD_DECODER == OLD_DECODER_IS_H264
-	//No H.264 a relação da posição dos pixeis é de 1, não de 4 como no AV1
+#else
+// #elif (THESIS_OLD_DECODER == OLD_DECODER_IS_H264) || (THESIS_OLD_DECODER == OLD_DECODER_IS_H265) || (THESIS_OLD_DECODER == OLD_DECODER_IS_H266)
+	//No H.26x a relação da posição dos pixeis é de 1, não de 4 como no AV1
 	int mi_col = line.mi_col / 4;
 	int mi_row = line.mi_row / 4;
 #endif

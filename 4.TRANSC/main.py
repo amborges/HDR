@@ -114,6 +114,8 @@ elif old_decoder == "H264":
 	import CONFIGURATIONS_H264 as CFG
 elif old_decoder == "H265":
 	import CONFIGURATIONS_H265 as CFG
+elif old_decoder == "H266":
+	import CONFIGURATIONS_H266 as CFG
 
 if CFG.__COMPATIBLE_WITH_VERSION__ != __THIS_VERSION__:
 	print("O arquivo de configuração não é compatível com este gerenciador. Por favor, acesse o repositório oficial e atualize os arquivos!")

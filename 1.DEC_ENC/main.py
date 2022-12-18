@@ -111,7 +111,8 @@ elif old_decoder == "H264":
 	import CFG.CONFIGURATIONS_H264 as CFG
 elif old_decoder == "H265":
 	import CFG.CONFIGURATIONS_H265 as CFG
-
+elif old_decoder == "H266":
+	import CFG.CONFIGURATIONS_H266 as CFG
 
 
 if CFG.__COMPATIBLE_WITH_VERSION__ != __THIS_VERSION__:

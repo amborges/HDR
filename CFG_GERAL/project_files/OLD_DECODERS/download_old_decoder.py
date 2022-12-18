@@ -16,8 +16,8 @@ def download_h265():
 	subprocess.run("mv HM-16.20 1.DEC_ENC/HM", shell=True)
 
 def download_h266():
-	subprocess.run("git clone https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM && cd VTM && git reset --hard c71f7a9e && mkdir bin", shell=True)
-	subprocess.run("mv VTM 1.DEC_ENC/VTM", shell=True)
+	subprocess.run("git clone https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM && cd VVCSoftware_VTM && git reset --hard c71f7a9e && mkdir bin", shell=True)
+	subprocess.run("mv VVCSoftware_VTM 1.DEC_ENC/VTM", shell=True)
 
 
 

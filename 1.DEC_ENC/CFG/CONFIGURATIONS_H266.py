@@ -173,11 +173,13 @@ def GENERATE_COMMAND(cq, folder, video_path, codec_path, home_path, path_id, ext
 	
 	#definindo o caminho do vídeo de entrada
 	output_file = ' -o ' + this_folder + 'decoded_video.yuv'
+	csv_file    = this_folder + 'old_decoder.csv'
 	
 	#Criando a linha de comando completa
 	codec_command  = executable_param 
 	codec_command += input_file 
 	codec_command += output_file
+	codec_command += ' > ' + csv_file
 	
 	#o & comercial no final serve para colocar o processo em segundo plano!
 	codec_command += ' &'
