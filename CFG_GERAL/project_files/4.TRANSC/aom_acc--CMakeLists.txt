@@ -72,6 +72,8 @@ elseif("${THESIS_OLD_DECODER}" MATCHES "H264")
 	add_definitions(-DTHESIS_OLD_DECODER=3)
 elseif("${THESIS_OLD_DECODER}" MATCHES "H265")
 	add_definitions(-DTHESIS_OLD_DECODER=4)
+elseif("${THESIS_OLD_DECODER}" MATCHES "H266")
+	add_definitions(-DTHESIS_OLD_DECODER=5)
 endif()
 
 # Enable generators like Xcode and Visual Studio to place projects in folders.

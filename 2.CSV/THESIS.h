@@ -97,7 +97,7 @@ typedef struct PROCESSED_FRAME_S{
 	AVG_PIXEL** f128;
 	AVG_PIXEL** f64;
 	AVG_PIXEL** f32;
-	AVG_PIXEL** f16;
+	//AVG_PIXEL** f16;
 	
 	int w128;
 	int h128;
@@ -105,8 +105,8 @@ typedef struct PROCESSED_FRAME_S{
 	int h64;
 	int w32;
 	int h32;
-	int w16;
-	int h16;
+	//int w16;
+	//int h16;
 	
 	//variável que controla se essa estrutura já foi inicializada
 	UCHAR initialized;

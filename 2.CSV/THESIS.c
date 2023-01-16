@@ -264,7 +264,7 @@ void free_PF(PROCESSED_FRAME* FRM){
 	FREE_ME(FRM->f128, FRM->w128);
 	FREE_ME(FRM->f64,  FRM->w64);
 	FREE_ME(FRM->f32,  FRM->w32);
-	FREE_ME(FRM->f16,  FRM->w16);
+	//FREE_ME(FRM->f16,  FRM->w16);
 }
 
 //Função que recebe um vetor, uma largura e uma altura.
@@ -283,13 +283,13 @@ void dreshape(PROCESSED_FRAME* FRM, AVG_PIXEL *lst){
 		FRM->h64  = math_ceil_div(h, 16);
 		FRM->w32  = math_ceil_div(w,  8);
 		FRM->h32  = math_ceil_div(h,  8);
-		FRM->w16  = math_ceil_div(w,  4);
-		FRM->h16  = math_ceil_div(h,  4);
+		//FRM->w16  = math_ceil_div(w,  4);
+		//FRM->h16  = math_ceil_div(h,  4);
 		
 		MMALLOC(FRM->f128, FRM->w128, FRM->h128, AVG_PIXEL);
 		MMALLOC(FRM->f64,  FRM->w64,  FRM->h64,  AVG_PIXEL);
 		MMALLOC(FRM->f32,  FRM->w32,  FRM->h32,  AVG_PIXEL);
-		MMALLOC(FRM->f16,  FRM->w16,  FRM->h16,  AVG_PIXEL);
+		//MMALLOC(FRM->f16,  FRM->w16,  FRM->h16,  AVG_PIXEL);
 		
 		FRM->initialized = 1;
 	}
@@ -298,7 +298,7 @@ void dreshape(PROCESSED_FRAME* FRM, AVG_PIXEL *lst){
 	FILL_MATRIX(FRM->f128, FRM->w128, FRM->h128);
 	FILL_MATRIX(FRM->f64,  FRM->w64,  FRM->h64);
 	FILL_MATRIX(FRM->f32,  FRM->w32,  FRM->h32);
-	FILL_MATRIX(FRM->f16,  FRM->w16,  FRM->h16);
+	//FILL_MATRIX(FRM->f16,  FRM->w16,  FRM->h16);
 }
 
 //função que lê um arquivo qualquer e retorna quantas linhas ele tem
@@ -642,25 +642,26 @@ void info_size(){
 		int s5 = math_ceil_div(w,  8);
 		int s6 = math_ceil_div(h,  8);
 		
-		int s7 = math_ceil_div(w,  4);
-		int s8 = math_ceil_div(h,  4);
+		//int s7 = math_ceil_div(w,  4);
+		//int s8 = math_ceil_div(h,  4);
 		
-		GLOBAL_VARIABLES.info_size = (s1 * s2) + (s3 * s4) + (s5 * s6) + (s7 * s8) + 1; 
+		//GLOBAL_VARIABLES.info_size = (s1 * s2) + (s3 * s4) + (s5 * s6) + (s7 * s8) + 1;
+		GLOBAL_VARIABLES.info_size = (s1 * s2) + (s3 * s4) + (s5 * s6) + 1;  
 	}
 }
 
 void processa_quadro(AVG_PIXEL* info_list, FRAME *frame){
 	int lst_idx = 0;
-	int bsize[4] = {128, 64, 32, 16};
+	int bsize[3] = {128, 64, 32};
 	int bsize_ref;
 	int step;
 	
 	//Para cada nível de profundidade, fazer
-	for(int depth_ref = 0; depth_ref < 4; depth_ref++){
+	for(int depth_ref = 0; depth_ref < 3; depth_ref++){
 		bsize_ref = bsize[depth_ref];
 		
 		//pulando de passo em passo os pixeis de interesse
-		step = math_ceil_div(bsize_ref, 4);
+		step = math_ceil_div(bsize_ref, 3);
 		
 		//Para cada pixel dentro do passo de interesse, fazer
 		for(int r = 0; r < frame->max_rows; r += step){
@@ -1006,7 +1007,7 @@ void export_info(int depth, int pos_c, int pos_r){
 		return;
 	}
 	
-	if(depth >= 4){
+	if(depth >= 3){
 		//a princípio nunca vai entrar aqui, mas por precaução
 		return;
 	}
@@ -1035,18 +1036,19 @@ void export_info(int depth, int pos_c, int pos_r){
 			max_r = GLOBAL_VARIABLES.OLD_P_FRAME.h64;
 			break;
 		case 2:
+		default:
 			info_old_decoder = GLOBAL_VARIABLES.OLD_P_FRAME.f32;
 			info_av1 = GLOBAL_VARIABLES.AV1_P_FRAME.f32;
 			max_c = GLOBAL_VARIABLES.OLD_P_FRAME.w32;
 			max_r = GLOBAL_VARIABLES.OLD_P_FRAME.h32;
 			break;
-		case 3:
-		default:
-			info_old_decoder = GLOBAL_VARIABLES.OLD_P_FRAME.f16;
-			info_av1 = GLOBAL_VARIABLES.AV1_P_FRAME.f16;
-			max_c = GLOBAL_VARIABLES.OLD_P_FRAME.w16;
-			max_r = GLOBAL_VARIABLES.OLD_P_FRAME.h16;
-			break;
+		//case 3:
+		//default:
+		//	info_old_decoder = GLOBAL_VARIABLES.OLD_P_FRAME.f16;
+		//	info_av1 = GLOBAL_VARIABLES.AV1_P_FRAME.f16;
+		//	max_c = GLOBAL_VARIABLES.OLD_P_FRAME.w16;
+		//	max_r = GLOBAL_VARIABLES.OLD_P_FRAME.h16;
+		//	break;
 	}
 	
 	//Quinto, capturo as informações em formato texto, conforme
@@ -1083,12 +1085,12 @@ void loop_exporting(){
 	static int iii = 0;
 	
 	int step;
-	for(int depth = 0; depth < 4; depth++){
+	for(int depth = 0; depth < 3; depth++){
 		switch(depth){
 			case 0: step = 32; break;
 			case 1: step = 16; break;
 			case 2: step =  8; break;
-			case 3: step =  4; break;
+			//case 3: step =  4; break;
 		}
 		for(int col = 0; col < GLOBAL_VARIABLES.width / 4; col += step){
 			for(int row = 0; row < GLOBAL_VARIABLES.height / 4; row += step){
@@ -1197,7 +1199,7 @@ int THESIS_get_decision(BLOCK_SIZE block_size, int pos_c, int pos_r){
 	INT3 crd = av1_decode_block_size(block_size);
 	
 	//se o bloco for 4x4, nada a fazer, mas não testar SPLIT
-	if(crd.d >= 4){
+	if(crd.d >= 3){
 		return THESIS_DONT_SPLIT;
 	}
 	
@@ -1225,18 +1227,19 @@ int THESIS_get_decision(BLOCK_SIZE block_size, int pos_c, int pos_r){
 			max_r = GLOBAL_VARIABLES.OLD_P_FRAME.h64;
 			break;
 		case 2:
+		default:
 			info_old_decoder = GLOBAL_VARIABLES.OLD_P_FRAME.f32;
 			info_av1 = GLOBAL_VARIABLES.AV1_P_FRAME.f32;
 			max_c = GLOBAL_VARIABLES.OLD_P_FRAME.w32;
 			max_r = GLOBAL_VARIABLES.OLD_P_FRAME.h32;
 			break;
-		case 3:
-		default:
-			info_old_decoder = GLOBAL_VARIABLES.OLD_P_FRAME.f16;
-			info_av1 = GLOBAL_VARIABLES.AV1_P_FRAME.f16;
-			max_c = GLOBAL_VARIABLES.OLD_P_FRAME.w16;
-			max_r = GLOBAL_VARIABLES.OLD_P_FRAME.h16;
-			break;
+		//case 3:
+		//default:
+		//	info_old_decoder = GLOBAL_VARIABLES.OLD_P_FRAME.f16;
+		//	info_av1 = GLOBAL_VARIABLES.AV1_P_FRAME.f16;
+		//	max_c = GLOBAL_VARIABLES.OLD_P_FRAME.w16;
+		//	max_r = GLOBAL_VARIABLES.OLD_P_FRAME.h16;
+		//	break;
 	}
 	
 	//Quinto, capturo as informações em formato texto, conforme
