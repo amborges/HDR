@@ -19,25 +19,17 @@ def export_metrics(filename, y_pred, y_test, classes, show_figure = False):
 	
 	#Mostrando a acurácia
 	import numpy as np
-	from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score
-	try:
-		acc = accuracy_score(y_test, y_pred)
-	except:
-		acc = -0.0
-	try:
-		f1 = f1_score(y_test, y_pred, average='macro', labels=np.unique(y_pred))
-	except:
-		f1 = -0.0
+	from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score, confusion_matrix
 	
-	try:
-		prec = precision_score(y_test, y_pred, average='macro', labels=np.unique(y_pred))
-	except:
-		prec = -0.0
+	#captura os valores da matriz de confusão
+	vn, fp, fn, vp = confusion_matrix(y_test, y_pred).ravel()
 	
-	try:
-		recall = recall_score(y_test, y_pred, average='macro', labels=np.unique(y_pred))
-	except:
-		recall = -0.0
+	#De acordo com as equações descritas na tese
+	acc = (vn + vp) / (vn + fp + fn + vp) #acurácia
+	pre = vp / (vp + fp)                  #precisão
+	sen = vp / (vp + fn)                  #sensibilidade
+	rec = vn / (vn + fp)                  #especificidade
+	f1  = 2.0 * ((pre * sen) / (pre + sen))
 	
 	try:
 		rocauc = roc_auc_score(y_test, y_pred, average=None, multi_class='ovo')
@@ -47,10 +39,10 @@ def export_metrics(filename, y_pred, y_test, classes, show_figure = False):
 	import os
 	csv_file = open(metricas_filename, 'a')
 	if os.path.getsize(metricas_filename) == 0:
-		csv_file.write("modelo,f1,ROC_AUC,acuracia,precision,recall\n")
+		csv_file.write("modelo,f1,ROC_AUC,acuracia,precision,recall,sensibility\n")
 	
 	
-	row_line = ','.join([filename, str(f1), str(rocauc), str(acc), str(prec), str(recall)])
+	row_line = ','.join([filename, str(f1), str(rocauc), str(acc), str(pre), str(rec), str(sen)])
 	csv_file.write(row_line+'\n')
 	csv_file.close()
 	
@@ -461,7 +453,7 @@ concat_combinations()
 models_list = training_and_testing(len(CCF.CPU_LIST), CSV_for_training, CSV_for_testing)
 
 #quarta fase: pega o arquivo com o resultado de todos os testes, agrupa eles e faz a média, retornando os 3 primeiros lugares
-#models_cup(models_list)
+models_cup(models_list)
 
 #quinta fase: converto o csv de vencedores para uma tupla de N possibilidades
 csv_to_tuple(1)

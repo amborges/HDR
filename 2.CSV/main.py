@@ -19,6 +19,8 @@ elif old_decoder == "H264":
 	old_decoder_number = 3
 elif old_decoder == "H265":
 	old_decoder_number = 4
+elif old_decoder == "H266":
+	old_decoder_number = 5
 
 os.system("gcc main.c THESIS.c -lm -DTHESIS_PASS_CSV=1 -fcommon -DTHESIS_OLD_DECODER="+str(old_decoder_number))# -lpng -fsanitize=address")
 
